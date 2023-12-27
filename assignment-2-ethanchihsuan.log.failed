@@ -1,0 +1,218 @@
+Name:Course Test 
+Hash:74d566c5ecfd4f74150b2e5274175a5555968fcc
+Timestamp=2023-06-13 00:03:00 +0000 
+## ********************FAILED********************
+### *****python3 compare.py ./code/out/Ri/Ri.trace ./code/ref/Ri/Ri.trace*****
+ ```--- ./code/out/Ri/Ri.trace
++++ ./code/ref/Ri/Ri.trace
+@@ -13,7 +13,7 @@
+ r12=00000004 r13=00000004 r14=00000004 r15=00000004 
+ r16=00000004 r17=00000004 r18=00000004 r19=00000004 
+ r20=00000004 r21=00000004 r22=00000004 r23=00000004 
+-r24=00000004 r25=00000004 r26=00000001 r27=00000004 
++r24=00000004 r25=00000004 r26=00000044 r27=00000004 
+ r28=00000004 r29=00000040 r30=00000004 r31=00000004 
+ 
+ r 0=00000000 r 1=00000004 r 2=000effff r 3=00003000 
+
+
+```
+### *****./riscv -d ./code/input/amdd.input > ./code/out/amdd.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/amdd.solution ./code/ref/amdd.solution*****
+ ```--- ./code/out/amdd.solution
++++ ./code/ref/amdd.solution
+@@ -2,4 +2,5 @@
+ 00001004: addi	x10, x0, 42
+ 00001008: sw	x10, 0(x11)
+ 0000100c: addi	x12, x0, 1
+-00001010: +00001010: amdd	x10, x11, x12
++00001014: lw	x10, 0(x11)
+
+
+```
+### *****timeout 60 ./riscv -r ./code/input/amdd.input > ./code/out/amdd.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/amdd.trace ./code/ref/amdd.trace*****
+ ```--- ./code/out/amdd.trace
++++ ./code/ref/amdd.trace
+@@ -34,3 +34,21 @@
+ r24=00000000 r25=00000000 r26=00000000 r27=00000000 
+ r28=00000000 r29=00000000 r30=00000000 r31=00000000 
+ 
++r 0=00000000 r 1=00000000 r 2=000effff r 3=00003000 
++r 4=00000000 r 5=00000000 r 6=00000000 r 7=00000000 
++r 8=00000000 r 9=00000000 r10=0000002b r11=00000400 
++r12=00000001 r13=00000000 r14=00000000 r15=00000000 
++r16=00000000 r17=00000000 r18=00000000 r19=00000000 
++r20=00000000 r21=00000000 r22=00000000 r23=00000000 
++r24=00000000 r25=00000000 r26=00000000 r27=00000000 
++r28=00000000 r29=00000000 r30=00000000 r31=00000000 
++
++r 0=00000000 r 1=00000000 r 2=000effff r 3=00003000 
++r 4=00000000 r 5=00000000 r 6=00000000 r 7=00000000 
++r 8=00000000 r 9=00000000 r10=0000002b r11=00000400 
++r12=00000001 r13=00000000 r14=00000000 r15=00000000 
++r16=00000000 r17=00000000 r18=00000000 r19=00000000 
++r20=00000000 r21=00000000 r22=00000000 r23=00000000 
++r24=00000000 r25=00000000 r26=00000000 r27=00000000 
++r28=00000000 r29=00000000 r30=00000000 r31=00000000 
++
+
+
+```
+### *****timeout 60 ./riscv -r -e ./code/input/multiply.input > ./code/out/multiply.trace*****
+ ```
+```
+### *****python3 part2_tester.py multiply*****
+ ```
+Starting multiply test
+ERROR: instruction 62, register 2. Expected: 0x000effff, Actual: 0x000efffb
+ERROR: instruction 62, register 19. Expected: 0x00000001, Actual: 0x00000000
+ERROR: instruction 67, register 2. Expected: 0x000efffb, Actual: 0x000effff
+ERROR: instruction 67, register 19. Expected: 0x00000001, Actual: 0x00000000
+ERROR: instruction 69, register 10. Expected: 0x00000001, Actual: 0x00000000
+ERROR: instruction 70, register 11. Expected: 0x00000000, Actual: 0x0000017a
+ERROR: could not parse line: Illegal ecall number 0
+
+
+```
+### *****timeout 60 ./riscv -r -e ./code/input/random.input > ./code/out/random.trace*****
+ ```
+```
+### *****python3 part2_tester.py random*****
+ ```
+Starting random test
+ERROR: instruction 5, register 5. Expected: 0xfffff000, Actual: 0x00000001
+ERROR: instruction 6, register 8. Expected: 0xffffffff, Actual: 0x000000ff
+ERROR: instruction 7, register 9. Expected: 0xfffff7ff, Actual: 0x000000ff
+ERROR: found an invalid instruction in the student trace file. Line: Invalid Instruction: 0x41f2d293
+
+random test has failed.
+
+```
+
+****************************************
+## ********************SUCCESS********************
+### *****./riscv -d ./code/input/R/R.input > ./code/out/R/R.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/R/R.solution ./code/ref/R/R.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/R/R.input > ./code/out/R/R.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/R/R.trace ./code/ref/R/R.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/Ri/Ri.input > ./code/out/Ri/Ri.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/Ri/Ri.solution ./code/ref/Ri/Ri.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r -v ./code/input/Ri/Ri.input > ./code/out/Ri/Ri.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/I/I.input > ./code/out/I/I.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/I/I.solution ./code/ref/I/I.solution*****
+ ```
+```
+### *****./riscv -d ./code/input/I/L.input > ./code/out/I/L.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/I/L.solution ./code/ref/I/L.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/I/I.input > ./code/out/I/I.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/I/I.trace ./code/ref/I/I.trace*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/I/L.input > ./code/out/I/L.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/I/L.trace ./code/ref/I/L.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/S/S.input > ./code/out/S/S.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/S/S.solution ./code/ref/S/S.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/S/S.input > ./code/out/S/S.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/S/S.trace ./code/ref/S/S.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/SB/SB.input > ./code/out/SB/SB.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/SB/SB.solution ./code/ref/SB/SB.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/SB/SB.input > ./code/out/SB/SB.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/SB/SB.trace ./code/ref/SB/SB.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/U/U.input > ./code/out/U/U.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/U/U.solution ./code/ref/U/U.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/U/U.input > ./code/out/U/U.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/U/U.trace ./code/ref/U/U.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/UJ/UJ.input > ./code/out/UJ/UJ.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/UJ/UJ.solution ./code/ref/UJ/UJ.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r ./code/input/UJ/UJ.input > ./code/out/UJ/UJ.trace*****
+ ```
+```
+### *****python3 compare.py ./code/out/UJ/UJ.trace ./code/ref/UJ/UJ.trace*****
+ ```
+```
+### *****./riscv -d ./code/input/simple.input > ./code/out/simple.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/simple.solution ./code/ref/simple.solution*****
+ ```
+```
+### *****./riscv -d ./code/input/multiply.input > ./code/out/multiply.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/multiply.solution ./code/ref/multiply.solution*****
+ ```
+```
+### *****./riscv -d ./code/input/random.input > ./code/out/random.solution*****
+ ```
+```
+### *****python3 compare.py ./code/out/random.solution ./code/ref/random.solution*****
+ ```
+```
+### *****timeout 60 ./riscv -r -e ./code/input/simple.input > ./code/out/simple.trace*****
+ ```
+```
+### *****python3 part2_tester.py simple*****
+ ```
+Starting simple test
+simple test has passed.
+
+```
